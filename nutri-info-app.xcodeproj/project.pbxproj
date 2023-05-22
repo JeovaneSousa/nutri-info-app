@@ -11,6 +11,7 @@
 		280609662A1BB8C100EC8524 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280609652A1BB8C100EC8524 /* Coordinator.swift */; };
 		280609682A1BC27300EC8524 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280609672A1BC27300EC8524 /* CoordinatorView.swift */; };
 		2806096A2A1BE0B100EC8524 /* homeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280609692A1BE0B100EC8524 /* homeViewModel.swift */; };
+		2806096C2A1BEDEC00EC8524 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806096B2A1BEDEC00EC8524 /* ProfileHeader.swift */; };
 		2807D9EF2A1B2382001ACFE4 /* LoginInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807D9EE2A1B2382001ACFE4 /* LoginInputs.swift */; };
 		2807D9F52A1B266A001ACFE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807D9F42A1B266A001ACFE4 /* HomeView.swift */; };
 		2858E3202A16A56D007193CB /* nutri_info_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858E31F2A16A56D007193CB /* nutri_info_appApp.swift */; };
@@ -47,6 +48,7 @@
 		280609652A1BB8C100EC8524 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		280609672A1BC27300EC8524 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		280609692A1BE0B100EC8524 /* homeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewModel.swift; sourceTree = "<group>"; };
+		2806096B2A1BEDEC00EC8524 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		2807D9EE2A1B2382001ACFE4 /* LoginInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputs.swift; sourceTree = "<group>"; };
 		2807D9F42A1B266A001ACFE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2858E31C2A16A56D007193CB /* nutri-info-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nutri-info-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				2807D9EE2A1B2382001ACFE4 /* LoginInputs.swift */,
+				2806096B2A1BEDEC00EC8524 /* ProfileHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				2858E3202A16A56D007193CB /* nutri_info_appApp.swift in Sources */,
 				2807D9EF2A1B2382001ACFE4 /* LoginInputs.swift in Sources */,
 				28B57A602A1AC3BD0056BB32 /* User.swift in Sources */,
+				2806096C2A1BEDEC00EC8524 /* ProfileHeader.swift in Sources */,
 				28B57A5E2A1AC3A60056BB32 /* LoginViewModel.swift in Sources */,
 				28B57A632A1AC5C50056BB32 /* UserAPI.swift in Sources */,
 				280609662A1BB8C100EC8524 /* Coordinator.swift in Sources */,

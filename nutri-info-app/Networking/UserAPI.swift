@@ -9,8 +9,8 @@ import Foundation
 class UserApi {
     func fetchUserData() -> [User] {
         return [
-            User(id: 1, username: "jeovane", password: "12345", profilaUri: URL(string: "https://avatars.githubusercontent.com/u/66012358?v=4")!),
-            User(id: 2, username: "ada", password: "54321", profilaUri: URL(string: "https://avatars.githubusercontent.com/u/100374064?v=4")!)
+            User(id: 1, username: "jeovane", fullname: "Jeovane Barbosa", password: "12345", profilaUri: URL(string: "https://avatars.githubusercontent.com/u/66012358?v=4")!),
+            User(id: 2, username: "ada", fullname: "Ada Carina", password: "54321", profilaUri: URL(string: "https://avatars.githubusercontent.com/u/100374064?v=4")!)
         ]
         
     }
