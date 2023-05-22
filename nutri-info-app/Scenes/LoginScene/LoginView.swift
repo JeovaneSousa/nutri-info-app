@@ -7,17 +7,15 @@
 
 import SwiftUI
 
-
-
 struct LoginView: View {
     
+    @EnvironmentObject var coordinator: Coordinator
     @ObservedObject var viewModel = LoginViewModel()
     
 
     var body: some View {
         NavigationView{
             VStack {
-                
                 HStack{
                     Spacer(minLength: 200)
                     
@@ -69,9 +67,9 @@ struct LoginView: View {
                 VStack(spacing:40) {
                     Button("Login") {
                         guard viewModel.checkInputs() else {return}
-                        guard viewModel.logIn() else {return}
-                        NavigationLink("Next View", destination: HomeView())
-
+                        guard viewModel.logIn(),
+                              let user = viewModel.getUser() else {return}
+                        coordinator.push(page: .homeView(user))
                     }
                     .foregroundColor(.white)
                     .background {
@@ -91,7 +89,6 @@ struct LoginView: View {
             }
             .padding()
             .preferredColorScheme(viewModel.selectedColorScheme())
-            
         }
         .alert(item: $viewModel.showAlert) { alert in
             Alert(title: Text(alert.title),

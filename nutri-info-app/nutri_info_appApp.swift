@@ -11,7 +11,7 @@ import SwiftUI
 struct nutri_info_appApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            CoordinatorView()
         }
     }
 }
