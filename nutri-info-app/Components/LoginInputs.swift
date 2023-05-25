@@ -8,15 +8,15 @@
 import SwiftUI
 
 enum InputType {
-    case USERNAME, PASSWORD
+    case NAME, PROFILEURI
     
     var contents: (String, String){
         switch self {
-        case .USERNAME:
-            return ("USERNAME", "Your username goes in here")
+        case .NAME:
+            return ("NAME *", "How do you wanna be called?")
             
-        case .PASSWORD:
-            return ("PASSWORD", "Your password goes in here")
+        case .PROFILEURI:
+            return ("PROFILE URL", "Your photo's link")
         }
     }
 
@@ -24,11 +24,11 @@ enum InputType {
 
 struct LoginInputs: View {
     @Binding var value: String
-    @State private var showPassword: Bool = false
     
     private var header: String
     private var placeHolder:String
     private var type: InputType
+    
     
     init (_ type: InputType, _ valueBind: Binding<String>) {
         _value = valueBind
@@ -41,37 +41,23 @@ struct LoginInputs: View {
     var body: some View {
         VStack(alignment:.leading){
             Text(header)
-                .foregroundColor(.secondary)
-                .fontWeight(.light)
+                .foregroundColor(.primary)
+                .fontWeight(.medium)
             
             HStack{
-                switch type {
-                    
-                case .USERNAME:
-                    TextField(placeHolder, text: $value)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled(true)
-                    
-                case .PASSWORD:
-                    if !showPassword {
-                        SecureField(placeHolder, text: $value)
-                    } else {
-                        TextField(placeHolder, text: $value)
-                    }
-                    
-                    Button("SHOW") {
-                        showPassword.toggle()
-                    }
-                    .foregroundColor(.cyan)
-                }
+                TextField(placeHolder, text: $value)
+                    .foregroundColor(.secondary)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled(true)
             }
             Rectangle()
                 .frame(height:1)
                 .foregroundColor(.secondary)
         }
     }
-    
 }
+    
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let placeHolderBinding = Binding {
@@ -80,6 +66,6 @@ struct ContentView_Previews: PreviewProvider {
             print()
         }
 
-        LoginInputs(.USERNAME, placeHolderBinding )
+        LoginInputs(.NAME, placeHolderBinding )
     }
 }

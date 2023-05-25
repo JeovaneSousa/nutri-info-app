@@ -8,17 +8,11 @@
 import Foundation
 
 struct User: Hashable {
-    let id: Int?
-    let username: String
-    let fullName: String
-    let password: String
-    let profilaUri: URL
+    let name: String
+    let profilaUri: String?
     
-    init(id: Int?, username: String, fullname: String, password: String, profilaUri: URL) {
-        self.id = id
-        self.username = username
-        self.fullName = fullname
-        self.password = password
+    init(name: String, profilaUri: String?) {
+        self.name = name
         self.profilaUri = profilaUri
     }
 }

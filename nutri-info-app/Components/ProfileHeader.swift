@@ -10,36 +10,49 @@ import SwiftUI
 struct ProfileHeader: View {
     let user: User
     
+    var url: URL? {
+        if let uri = user.profilaUri,
+           let url = URL(string: uri) {
+            return url
+        }
+        return nil
+    }
     var body: some View {
         
-        VStack {
-            Image(systemName: "photo.circle")
-                .resizable()
-                .clipShape(Circle())
-                .scaledToFit()
-                .overlay {
-                    Circle()
-                        .clipShape(Circle().stroke(lineWidth: 4))
-                        .foregroundColor(.white)
-                }
+        VStack(spacing:30) {
+            AsyncImage(url: url) { image in
+                image.resizable()
+            } placeholder: {
+                Image(systemName: "photo.circle.fill")
+                    .resizable()
+            }
+            .clipShape(Circle())
+            .frame(width: 120, height: 120)
+            .shadow(color: .black.opacity(0.6), radius: 10,  y: 10)
             .background {
-                Rectangle()
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2.5)
-                    .foregroundColor(.cyan)
-                    .ignoresSafeArea()
-            }.frame(width:150, height: 150)
-            
-            Text(user.fullName)
+                Circle()
+                    .clipShape(Circle().stroke(lineWidth: 6))
+                    .foregroundColor(.white)
+                    .frame(width: 125, height: 125)
+            }
+        
+            Text(user.name)
                 .font(.title)
                 .fontWeight(.light)
-                .foregroundColor(.secondary)
+                .foregroundColor(.primary)
         }
         .padding(.top, 20)
+        .background {
+            Rectangle()
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2.7)
+                Color.gradientColor
+                .ignoresSafeArea()
+        }
     }
 }
 
 struct ProfileHeader_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(user: User(id: 2, username: "ada", fullname: "Ada Carina", password: "54321", profilaUri: URL(string: "https://avatars.githubusercontent.com/u/100374064?v=4")!))
+        ProfileHeader(user: User(name: "Ada Carina", profilaUri: "https://avatars.githubusercontent.com/u/100374064?v=4"))
     }
 }

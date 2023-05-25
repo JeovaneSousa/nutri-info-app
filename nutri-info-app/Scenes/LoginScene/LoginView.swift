@@ -9,101 +9,80 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @EnvironmentObject var defaultsManager: DefaultsManager
     @EnvironmentObject var coordinator: Coordinator
     @ObservedObject var viewModel = LoginViewModel()
+
     
 
     var body: some View {
-        NavigationView{
-            VStack {
-                HStack{
-                    Spacer(minLength: 200)
-                    
-                    Picker("Choose appearence", selection: $viewModel.selectedAppMode) {
-                        ForEach(AppMode.allCases, id: \.self) {
-                            switch $0 {
-                            case .LIGHT:
-                                Image(systemName: "sun.and.horizon.fill")
-                            case .DARK:
-                                Image(systemName: "moon.circle")
-                            }
+        VStack {
+            HStack{
+                Spacer(minLength: 200)
+                
+                Picker("Choose appearence", selection: $defaultsManager.selectedAppMode) {
+                    ForEach(AppMode.allCases, id: \.self) {
+                        switch $0 {
+                        case .LIGHT:
+                            Image(systemName: "sun.and.horizon.fill")
+                        case .DARK:
+                            Image(systemName: "moon.circle")
                         }
                     }
-                    .pickerStyle(.segmented)
-                    
-                    .onChange(of: viewModel.selectedAppMode) { _ in
-                        viewModel.saveSelectedColorSchema()
-                    }
-                    
-                    .onAppear {
-                        viewModel.retrieveDefaultColorSchema()
-                    }
                 }
-                VStack(alignment:.leading,
-                       spacing:20) {
-                    Text("Hello.")
-                        .font(.largeTitle)
-                        .foregroundColor(.primary)
-                    
-                    Text("Welcome back.")
-                        .font(.title)
-                        .foregroundColor(.primary)
-                }
-               .padding(.trailing, 160)
+                .pickerStyle(.segmented)
                 
-                Spacer()
-                
-                VStack(spacing:40){
-                    LoginInputs(.USERNAME, $viewModel.username)
-                    LoginInputs(.PASSWORD, $viewModel.password)
-                }
-                
-                Toggle("Remeber me",isOn: $viewModel.rememberMe)
-                    .foregroundColor(.secondary)
-                    .padding(.leading, 200)
-                
-                Spacer()
-                
-                VStack(spacing:40) {
-                    Button("Login") {
-                        guard viewModel.checkInputs() else {return}
-                        guard viewModel.logIn(),
-                              let user = viewModel.getUser() else {return}
-                        coordinator.push(page: .homeView(user))
-                    }
-                    .foregroundColor(.white)
-                    .background {
-                        Rectangle()
-                            .foregroundColor(.cyan)
-                            .padding(-8)
-                            .cornerRadius(8)
-                            .frame(width: UIScreen.main.bounds.width / 1.5, height: 50, alignment: .center)
-                    }
-                    .shadow(color: Color.gray.opacity(0.3), radius: 8, x: 0, y: 4)
-                    
-                    Button("Create Account") {
-                        
-                    }
-                    .foregroundColor(.secondary)
+                .onAppear {
+                    defaultsManager.retrieveDefaultColorSchema()
                 }
             }
-            .padding()
-            .preferredColorScheme(viewModel.selectedColorScheme())
+            HStack {
+                VStack(alignment:.leading,
+                       spacing:20) {
+                    Text("Hello!")
+                    
+                    Text("Welcome back")
+                }
+                   .font(.largeTitle)
+                   .fontDesign(.serif)
+                   .fontWeight(.light)
+                   .foregroundColor(.primary)
+                Spacer()
+            }
+            Spacer()
+            
+            VStack(spacing:40){
+                LoginInputs(.NAME, $viewModel.name)
+                LoginInputs(.PROFILEURI, $viewModel.profileURI)
+            }
+            
+            Toggle("Remeber me",isOn: $viewModel.rememberMe)
+                .foregroundColor(.secondary)
+                .padding(.leading, 200)
+            
+            Spacer()
+            
+            VStack(spacing:40) {
+                StyledButton {
+                    let user = User(name: viewModel.name, profilaUri: viewModel.profileURI)
+                    
+                    coordinator.push(page: .homeView(user))
+                }
+                .disabled(viewModel.isFieldReady)
+                .opacity(viewModel.isFieldReady ? 0.5 : 1.0)
+                }
         }
-        .alert(item: $viewModel.showAlert) { alert in
-            Alert(title: Text(alert.title),
-                  message: Text(alert.message),
-                  dismissButton: .cancel(Text("Ok")))
-        }
-        
+        .padding()
+        .preferredColorScheme(defaultsManager.selectedColorScheme())
+        .background(Color.mainColor)
     }
-
 }
 
 
 struct HomeViewPreviews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(DefaultsManager())
     }
 }
 
