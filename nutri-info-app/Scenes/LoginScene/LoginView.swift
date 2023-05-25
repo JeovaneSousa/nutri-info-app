@@ -11,8 +11,7 @@ struct LoginView: View {
     
     @EnvironmentObject var defaultsManager: DefaultsManager
     @EnvironmentObject var coordinator: Coordinator
-    @ObservedObject var viewModel = LoginViewModel()
-
+    @StateObject var viewModel = LoginViewModel()
     
 
     var body: some View {
@@ -40,7 +39,6 @@ struct LoginView: View {
                 VStack(alignment:.leading,
                        spacing:20) {
                     Text("Hello!")
-                    
                     Text("Welcome back")
                 }
                    .font(.largeTitle)
@@ -63,12 +61,11 @@ struct LoginView: View {
             Spacer()
             
             VStack(spacing:40) {
-                StyledButton {
-                    let user = User(name: viewModel.name, profilaUri: viewModel.profileURI)
+                StyledButton(withText:"Try it out", isEnabled: viewModel.isFieldReady) {
+                    let _ = User(name: viewModel.name, profilaUri: viewModel.profileURI)
                     
-                    coordinator.push(page: .homeView(user))
+                    coordinator.push(page: .homeView)
                 }
-                .disabled(viewModel.isFieldReady)
                 .opacity(viewModel.isFieldReady ? 0.5 : 1.0)
                 }
         }

@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum HttpMethod: String {
-    case GET, POST, PUT, DELETE
-}
-
 class HttpRequest {
     let urlSession = URLSession.shared
     var dataTask: URLSessionDataTask?
@@ -20,7 +16,7 @@ class HttpRequest {
                              httpMethod: HttpMethod,
                              decoder: JSONDecoder = .init(),
                              encoder: JSONEncoder = .init(),
-                             completionHandler: @escaping (Result<T,NetworkError>) -> Void) {
+                             completionHandler: @escaping (HttpResult<T>) -> Void) {
         
         guard let url = URL(string: url) else { return }
         var request = URLRequest(url: url)
@@ -30,31 +26,45 @@ class HttpRequest {
         
         dataTask = urlSession.dataTask(with: request) { data, response, error in
             
+            let result: HttpResult = Result(data: data, error: error)
+                .mapError { error in
+                return NetworkError.unableToPerformRequest(error)}
+            
+                .flatMap { data in
+                return Result { try decoder.decode(T.self, from: data)}}
+                
+                .flatMapError { error in
+                if let error = error as? NetworkError {
+                    return Result.failure(error)
+                }
+                
+                if let response = response as? HTTPURLResponse,
+                   !response.inSucessRange {
+                    return Result.failure(NetworkError.requestFailed(response.statusCode))
+                }
+                return Result.failure(NetworkError.invalidData(error))
+            }
+            completionHandler(result)
         }
-        
+        dataTask?.resume()
     }
 }
 
 enum NetworkError: Error, LocalizedError {
-    case requestFailed(Error)
+    case unableToPerformRequest(Error)
+    case requestFailed(Int)
+    case invalidData(Error)
     
     var errorMessage: String {
         switch self {
-        case .requestFailed(let error):
-            return "Request failed because of the following error \(error.localizedDescription)"
+        case .unableToPerformRequest(let error):
+            return "Unable to perform request for the following reason: \(error.localizedDescription)"
+        case .requestFailed(let statusCode):
+            return "Request failed. Status code: \(statusCode)"
+        case .invalidData(let error):
+            return "Unable to parse data. Error: \(error.localizedDescription)"
         }
     }
 }
 
-extension Result {
-    init(data: Success?, error:Failure? ) {
-        if let data = data {
-            self = Result.success(data)
-        }
-        if let error = error {
-            self = Result.failure(error)
-        }
-        
-        preconditionFailure("Unable to create Result.")
-    }
-}
+

@@ -8,5 +8,5 @@ import SwiftUI
 
 enum Page: Hashable {
     case loginView
-    case homeView(User)
+    case homeView
 }

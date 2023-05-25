@@ -15,6 +15,7 @@ class LoginViewModel: ObservableObject {
     @Published var profileURI: String = ""
     @Published var rememberMe: Bool = false
     
+    
     var isFieldReady: Bool {
         return name.isEmpty
     }

@@ -26,8 +26,8 @@ class Coordinator: ObservableObject {
         switch page {
         case .loginView:
             LoginView()
-        case .homeView(let user):
-            HomeView(user: user)
+        case .homeView:
+            HomeView()
         }
     }
 }
