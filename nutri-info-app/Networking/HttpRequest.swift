@@ -23,15 +23,17 @@ class HttpRequest {
         
         request.httpMethod = httpMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        dataTask = urlSession.dataTask(with: request) { data, response, error in
-            
+        dataTask?.cancel()
+        dataTask =  urlSession.dataTask(with: request) { [weak self] data, response, error in
+            defer {
+                self?.dataTask = nil
+            }
             let result: HttpResult = Result(data: data, error: error)
                 .mapError { error in
                 return NetworkError.unableToPerformRequest(error)}
             
                 .flatMap { data in
-                return Result { try decoder.decode(T.self, from: data)}}
+                return Result { try  decoder.decode(T.self, from: data)}}
                 
                 .flatMapError { error in
                 if let error = error as? NetworkError {
@@ -60,9 +62,9 @@ enum NetworkError: Error, LocalizedError {
         case .unableToPerformRequest(let error):
             return "Unable to perform request for the following reason: \(error.localizedDescription)"
         case .requestFailed(let statusCode):
-            return "Request failed. Status code: \(statusCode)"
+            return "Status code: \(statusCode)"
         case .invalidData(let error):
-            return "Unable to parse data. Error: \(error.localizedDescription)"
+            return "Unable to parse data. \(error.localizedDescription)"
         }
     }
 }

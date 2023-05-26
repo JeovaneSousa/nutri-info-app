@@ -6,7 +6,7 @@
 //
 
 
-struct Report: Codable {
+struct Report: Codable, Hashable {
     
     let name: String
     let weight: Float
@@ -28,7 +28,7 @@ struct Report: Codable {
         case disclaimer
         case bmi
         case goalDescription = "goal_description"
-        case bmiDiagnosis = "imc_diagnosis"
+        case bmiDiagnosis = "bmi_diagnosis"
         case IdealWeightRange = "ideal_weight_range"
         case waterRequirement = "water_requirement"
         case calorieIntakeRequirement = "calorie_intake_requirement"
@@ -36,7 +36,7 @@ struct Report: Codable {
 
 }
 
-struct IdealWeightRange:  Codable {
+struct IdealWeightRange:  Codable, Hashable {
     let minWeight: Float
     let maxWeight: Float
     

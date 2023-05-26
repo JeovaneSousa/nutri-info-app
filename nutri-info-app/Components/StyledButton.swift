@@ -10,11 +10,9 @@ import SwiftUI
 struct StyledButton: View {
     let text: String
     let action: (() -> Void)
-    let isEnabled: Bool
     
-    init(withText text: String, isEnabled:Bool, action: @escaping (() -> Void)) {
+    init(withText text: String, action: @escaping (() -> Void)) {
         self.action = action
-        self.isEnabled = isEnabled
         self.text = text
     }
     var body: some View {
@@ -33,7 +31,7 @@ struct StyledButton: View {
 
 struct StyledButton_Previews: PreviewProvider {
     static var previews: some View {
-        StyledButton(withText: "Yea!",isEnabled: false) {
+        StyledButton(withText: "Yea!") {
             
         }
     }

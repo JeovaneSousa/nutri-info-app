@@ -13,8 +13,8 @@ struct LoginView: View {
     @EnvironmentObject var coordinator: Coordinator
     @StateObject var viewModel = LoginViewModel()
     
-
     var body: some View {
+
         VStack {
             HStack{
                 Spacer(minLength: 200)
@@ -41,10 +41,10 @@ struct LoginView: View {
                     Text("Hello!")
                     Text("Welcome back")
                 }
-                   .font(.largeTitle)
-                   .fontDesign(.serif)
-                   .fontWeight(.light)
-                   .foregroundColor(.primary)
+                       .font(.largeTitle)
+                       .fontDesign(.serif)
+                       .fontWeight(.light)
+                       .foregroundColor(.primary)
                 Spacer()
             }
             Spacer()
@@ -59,15 +59,16 @@ struct LoginView: View {
                 .padding(.leading, 200)
             
             Spacer()
-            
+
             VStack(spacing:40) {
-                StyledButton(withText:"Try it out", isEnabled: viewModel.isFieldReady) {
-                    let _ = User(name: viewModel.name, profilaUri: viewModel.profileURI)
+                StyledButton(withText:"Try it out") {
+                    let user = User(name: viewModel.name, profilaUri: viewModel.profileURI)
                     
-                    coordinator.push(page: .homeView)
+                    coordinator.push(page: .homeView(user))
                 }
-                .opacity(viewModel.isFieldReady ? 0.5 : 1.0)
-                }
+                .disabled(viewModel.isDisabled)
+                .opacity(viewModel.isDisabled ? 0.5 : 1.0)
+            }
         }
         .padding()
         .preferredColorScheme(defaultsManager.selectedColorScheme())

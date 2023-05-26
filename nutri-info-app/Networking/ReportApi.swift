@@ -18,14 +18,16 @@ class ReportApi {
                    queue: DispatchQueue = .main,
                    completionHandler: @escaping (ApiResult<Report>) -> Void) {
         
-        let Url = "http://127.0.0.1:8000/nutri-info/\(name)?weight=\(weight)&height=\(height)&goal =\(selectedGoal)"
-        
+        let Url = "http://127.0.0.1:8000/nutri-info/\(name)?weight=\(weight)&height=\(height)&goal=\(selectedGoal)"
+
         httpRequest.execute(url: Url, httpMethod: .GET) { (result: HttpResult<Report>) in
             switch result {
+                
             case .success(let report):
                 queue.async {
                     completionHandler(.success(report))
                 }
+                
             case .failure(let error):
                 let context_error = ApiError.requestError(error)
                 queue.async {

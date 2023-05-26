@@ -47,7 +47,7 @@ struct GoalSelector: View {
                 RoundedRectangle(cornerRadius: 20)
                     .clipShape(RoundedRectangle(cornerRadius:20).stroke(lineWidth:1))
             }
-            .frame(width:.infinity, height:90)
+            .frame(height:90)
         }
 
 
