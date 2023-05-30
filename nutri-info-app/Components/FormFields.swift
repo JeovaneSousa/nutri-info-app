@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-enum FormType {
-    case weight, height
-    
-    var contents: (String, String, String) {
-        switch self {
-        case .weight:
-            return ("WEIGHT", "clipboard.fill", "Weight in kilograms. Ex:'86'")
-        case .height:
-            return ("HEIGHT","figure.wave.circle.fill", "Height in meters. Ex:'1.85'")
-        }
-    }
-}
-
-
 struct FormFields: View {
     
     @Binding var value: Float?
@@ -73,6 +59,19 @@ struct FormFields: View {
                     }
                     .shadow(radius: 10, x: 5, y: 5)
             }
+        }
+    }
+}
+
+enum FormType {
+    case weight, height
+    
+    var contents: (String, String, String) {
+        switch self {
+        case .weight:
+            return ("WEIGHT", "clipboard.fill", "Weight in kilograms. Ex:'86'")
+        case .height:
+            return ("HEIGHT","figure.wave.circle.fill", "Height in meters. Ex:'1.85'")
         }
     }
 }

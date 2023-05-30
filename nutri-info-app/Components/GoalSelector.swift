@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-enum Goals: String, CaseIterable {
-    case LOSS
-    case MAINTENANCE
-    case GAIN
-    
-    var text: String {
-        switch self {
-        case .LOSS: return "Weight loss"
-        case .MAINTENANCE: return "Maintain weight"
-        case .GAIN: return "Weight gain"
-        }
-    }
-}
-
 struct GoalSelector: View {
     
     @Binding var value: Goals
@@ -49,8 +35,20 @@ struct GoalSelector: View {
             }
             .frame(height:90)
         }
+    }
+}
 
-
+enum Goals: String, CaseIterable {
+    case LOSS
+    case MAINTENANCE
+    case GAIN
+    
+    var text: String {
+        switch self {
+        case .LOSS: return "Weight loss"
+        case .MAINTENANCE: return "Maintain weight"
+        case .GAIN: return "Weight gain"
+        }
     }
 }
 

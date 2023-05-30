@@ -48,7 +48,7 @@ struct HomeView: View {
                             switch focus {
                             case .weight: focus = .height
                             case .height: focus = nil
-                            case.none: focus = nil
+                            case .none: focus = nil
                             }
                         }
                     }
@@ -85,7 +85,7 @@ struct HomeView: View {
             }
             .padding()
         }
-        .background(Color.backgroundColor)
+        .background(Color.subColor)
         .navigationBarBackButtonHidden(true)
 
     }

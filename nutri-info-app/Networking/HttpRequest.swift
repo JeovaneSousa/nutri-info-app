@@ -20,9 +20,9 @@ class HttpRequest {
         
         guard let url = URL(string: url) else { return }
         var request = URLRequest(url: url)
-        
         request.httpMethod = httpMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
         dataTask?.cancel()
         dataTask =  urlSession.dataTask(with: request) { [weak self] data, response, error in
             defer {

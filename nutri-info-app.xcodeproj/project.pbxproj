@@ -23,6 +23,7 @@
 		2858E3312A16A56E007193CB /* nutri_info_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858E3302A16A56E007193CB /* nutri_info_appTests.swift */; };
 		2858E33B2A16A56E007193CB /* nutri_info_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858E33A2A16A56E007193CB /* nutri_info_appUITests.swift */; };
 		2858E33D2A16A56E007193CB /* nutri_info_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858E33C2A16A56E007193CB /* nutri_info_appUITestsLaunchTests.swift */; };
+		285F24992A248A4600786CBA /* ReportFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285F24982A248A4600786CBA /* ReportFields.swift */; };
 		2892DB152A2056A400EDB692 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892DB142A2056A400EDB692 /* ReportView.swift */; };
 		28935C742A1E71D1002AFA32 /* GoalSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28935C732A1E71D1002AFA32 /* GoalSelector.swift */; };
 		28935C782A1E8A13002AFA32 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28935C772A1E8A13002AFA32 /* StyledButton.swift */; };
@@ -72,6 +73,7 @@
 		2858E3362A16A56E007193CB /* nutri-info-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "nutri-info-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2858E33A2A16A56E007193CB /* nutri_info_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nutri_info_appUITests.swift; sourceTree = "<group>"; };
 		2858E33C2A16A56E007193CB /* nutri_info_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nutri_info_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		285F24982A248A4600786CBA /* ReportFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFields.swift; sourceTree = "<group>"; };
 		2892DB142A2056A400EDB692 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		28935C732A1E71D1002AFA32 /* GoalSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelector.swift; sourceTree = "<group>"; };
 		28935C772A1E8A13002AFA32 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				2806096D2A1C135200EC8524 /* FormFields.swift */,
 				28935C732A1E71D1002AFA32 /* GoalSelector.swift */,
 				28935C772A1E8A13002AFA32 /* StyledButton.swift */,
+				285F24982A248A4600786CBA /* ReportFields.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			files = (
 				2858E3222A16A56D007193CB /* LoginView.swift in Sources */,
 				280609682A1BC27300EC8524 /* CoordinatorView.swift in Sources */,
+				285F24992A248A4600786CBA /* ReportFields.swift in Sources */,
 				2806096A2A1BE0B100EC8524 /* homeViewModel.swift in Sources */,
 				2807D9F52A1B266A001ACFE4 /* HomeView.swift in Sources */,
 				28935C7B2A1E9728002AFA32 /* Color.swift in Sources */,

@@ -41,10 +41,10 @@ struct LoginView: View {
                     Text("Hello!")
                     Text("Welcome back")
                 }
-                       .font(.largeTitle)
-                       .fontDesign(.serif)
-                       .fontWeight(.light)
-                       .foregroundColor(.primary)
+               .font(.largeTitle)
+               .fontDesign(.serif)
+               .fontWeight(.light)
+               .foregroundColor(.primary)
                 Spacer()
             }
             Spacer()
