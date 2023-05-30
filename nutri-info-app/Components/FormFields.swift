@@ -7,28 +7,15 @@
 
 import SwiftUI
 
-enum FormType {
-    case weight, height
-    
-    var contents: (String, String, String) {
-        switch self {
-        case .weight:
-            return ("WEIGHT", "clipboard.fill", "Your weight in kilograms 'kg'")
-        case .height:
-            return ("HEIGHT","figure.wave.circle.fill", "Your height in meters 'm'")
-        }
-    }
-}
-
-
 struct FormFields: View {
     
-    @Binding var value: Float
+    @Binding var value: Float?
+
     let header: String
     let sfSymbol : String
     let placeholder: String
 
-    init(formType: FormType, value: Binding<Float>) {
+    init(formType: FormType, value: Binding<Float?>) {
         _value = value
         self.header = formType.contents.0
         self.sfSymbol = formType.contents.1
@@ -44,9 +31,9 @@ struct FormFields: View {
                 
             HStack{
                 ZStack{
-
                     Circle()
                         .fill(Color.gradientColor)
+                    
                     Image(systemName: sfSymbol)
                         .resizable()
                         .frame(width: 40, height: 40)
@@ -57,8 +44,10 @@ struct FormFields: View {
                 .padding(.leading, 5)
                 
                 TextField(placeholder, value: $value, format: .number)
+                    .keyboardType(.decimalPad)
                     .foregroundColor(.secondary)
                     .padding(.leading, 10)
+
             }
             .background {
                 RoundedRectangle(cornerRadius: 20)
@@ -72,14 +61,26 @@ struct FormFields: View {
             }
         }
     }
+}
 
+enum FormType {
+    case weight, height
+    
+    var contents: (String, String, String) {
+        switch self {
+        case .weight:
+            return ("WEIGHT", "clipboard.fill", "Weight in kilograms. Ex:'86'")
+        case .height:
+            return ("HEIGHT","figure.wave.circle.fill", "Height in meters. Ex:'1.85'")
+        }
+    }
 }
 
 
 struct FloatingForm_Previews: PreviewProvider {
     static var previews: some View {
         let placeholder_binding = Binding {
-            Float(0)
+            Float?.some(0)
         } set: { Value, Transaction in
             print()
         }

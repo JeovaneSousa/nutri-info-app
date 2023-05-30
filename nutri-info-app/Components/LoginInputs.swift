@@ -7,21 +7,6 @@
 
 import SwiftUI
 
-enum InputType {
-    case NAME, PROFILEURI
-    
-    var contents: (String, String){
-        switch self {
-        case .NAME:
-            return ("NAME *", "How do you wanna be called?")
-            
-        case .PROFILEURI:
-            return ("PROFILE URL", "Your photo's link")
-        }
-    }
-
-}
-
 struct LoginInputs: View {
     @Binding var value: String
     
@@ -55,6 +40,21 @@ struct LoginInputs: View {
                 .foregroundColor(.secondary)
         }
     }
+}
+
+enum InputType {
+    case NAME, PROFILEURI
+    
+    var contents: (String, String){
+        switch self {
+        case .NAME:
+            return ("NAME *", "How do you wanna be called?")
+            
+        case .PROFILEURI:
+            return ("PROFILE URL", "Your photo's link")
+        }
+    }
+
 }
     
 

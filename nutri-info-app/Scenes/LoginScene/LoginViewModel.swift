@@ -10,13 +10,14 @@ import SwiftUI
 
 class LoginViewModel: ObservableObject {
 
-    @Published var users: [User] = []
     @Published var name: String = ""
     @Published var profileURI: String = ""
     @Published var rememberMe: Bool = false
     
-    var isFieldReady: Bool {
-        return name.isEmpty
+    
+    var isDisabled: Bool {
+        guard name.isEmpty || name.count < 3 else { return false }
+        return true
     }
 }
     
