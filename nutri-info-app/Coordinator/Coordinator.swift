@@ -30,6 +30,8 @@ class Coordinator: ObservableObject {
             HomeView(user: user)
         case.reportView(let report):
             ReportView(report: report)
+        case .disclaimerView(let report):
+            DisclaimerView(report: report)
         }
     }
 }

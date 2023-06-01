@@ -20,6 +20,21 @@ struct ReportFields: View {
         self.valueText = valueText
     }
     
+    var numberValue: some View {
+        Text(value ?? 0, format: .number.precision(.fractionLength(2)))
+            .font(.title)
+    }
+    
+    var textValue: some View {
+        Text(self.valueText ?? "")
+            .font(.headline)
+    }
+    
+    var hasTextValue: Bool {
+        if let text = valueText {return true}
+        return false
+    }
+    
     var body: some View {
             RoundedRectangle(cornerRadius: 16)
             .fill(Color.gradientColor)
@@ -29,14 +44,13 @@ struct ReportFields: View {
                     Text(self.title)
                         .font(.headline)
                         .fontWeight(.bold)
-                    if let value = self.value {
-                        Text(value, format: .number)
-                            .font(.title)
+                    if hasTextValue {
+                        textValue
                     } else {
-                        Text(self.valueText!)
-                            
+                        numberValue
                     }
                     Text(self.measurementType)
+                        .foregroundColor(.primary)
                         .fontWeight(.ultraLight)
                 }
             }
@@ -56,7 +70,7 @@ enum FieldType {
         case .bmi:
             return ("Body Mass Index", "kg/h**2")
         case .bmiDiagnosis:
-            return ("Body Mass Index Diagnosis", "")
+            return ("BMI Diagnosis", "")
         case .goalDescription:
             return ("Body weight goal", "")
         case .minIdealWeight:
@@ -64,9 +78,9 @@ enum FieldType {
         case .maxIdealWeight:
             return ("Max Ideal Range", "Kilograms: kg")
         case .calorieRequirement:
-            return ("Calorie Daily Requirement", "Kilocalories: Kcal")
+            return ("Daily Caloric Requirement", "Kilocalories: Kcal")
         case .waterRequirement:
-            return ("Water Daily Requirement", "Milliiters: ml")
+            return ("Daily Water Requirement", "Milliliters: ml")
         }
     }
 }

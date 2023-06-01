@@ -12,7 +12,6 @@ class LoginViewModel: ObservableObject {
 
     @Published var name: String = ""
     @Published var profileURI: String = ""
-    @Published var rememberMe: Bool = false
     
     
     var isDisabled: Bool {

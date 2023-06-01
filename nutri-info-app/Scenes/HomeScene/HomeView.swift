@@ -13,7 +13,7 @@ enum FocusFields {
 
 struct HomeView: View {
 
-
+    @EnvironmentObject var defaults: DefaultsManager
     @EnvironmentObject var coordinator: Coordinator
     @StateObject var viewModel = HomeViewModel()
     @FocusState var focus: FocusFields?
@@ -87,6 +87,17 @@ struct HomeView: View {
         }
         .background(Color.subColor)
         .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    coordinator.pop()
+                } label: {
+                    Image(systemName: "person.badge.minus")
+                        .foregroundColor(.primary)
+                }
+
+            }
+        }
 
     }
 }

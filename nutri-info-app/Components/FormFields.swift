@@ -38,14 +38,13 @@ struct FormFields: View {
                         .resizable()
                         .frame(width: 40, height: 40)
                         .foregroundColor(.primary)
-                        
                 }
                 .frame(width: 60, height: 60)
                 .padding(.leading, 5)
                 
                 TextField(placeholder, value: $value, format: .number)
                     .keyboardType(.decimalPad)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
                     .padding(.leading, 10)
 
             }
