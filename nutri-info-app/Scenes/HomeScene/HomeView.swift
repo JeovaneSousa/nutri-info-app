@@ -13,7 +13,6 @@ enum FocusFields {
 
 struct HomeView: View {
 
-    @EnvironmentObject var defaults: DefaultsManager
     @EnvironmentObject var coordinator: Coordinator
     @StateObject var viewModel = HomeViewModel()
     @FocusState var focus: FocusFields?
@@ -26,7 +25,7 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            ProfileHeader(user: User(name: "Ada Carina", profilaUri: "https://avatars.githubusercontent.com/u/100374064?v=4"))
+            ProfileHeader(user: user)
             
             VStack {
                 Text("REPORT FORM")
@@ -90,14 +89,23 @@ struct HomeView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    coordinator.pop()
+                    UserDefaults.rememberMe = false
+                    UserDefaults.user = nil
+                    UserDefaults.colorMode = ""
+                    viewModel.showLogOutAlert = true
+                    
                 } label: {
                     Image(systemName: "person.badge.minus")
                         .foregroundColor(.primary)
                 }
-
             }
         }
+        .alert("Log out Sucessfull!", isPresented: $viewModel.showLogOutAlert) {
+            Button("Ok", role: .cancel) {}
+        } message: {
+            Text("Please, restart the app to log in again.")
+        }
+
 
     }
 }
@@ -105,7 +113,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(user: User(name: "Ada Carina", profilaUri: "https://avatars.githubusercontent.com/u/100374064?v=4"))
-            .environmentObject(DefaultsManager())
     }
 }
 

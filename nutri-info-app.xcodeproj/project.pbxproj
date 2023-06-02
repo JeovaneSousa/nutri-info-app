@@ -147,7 +147,6 @@
 		2807D9F02A1B2505001ACFE4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				282937222A1D3959002E1079 /* Defaults.swift */,
 				280609672A1BC27300EC8524 /* CoordinatorView.swift */,
 				2807D9F12A1B250E001ACFE4 /* LoginScene */,
 				2807D9F32A1B2653001ACFE4 /* HomeScene */,
@@ -258,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				28935C7A2A1E9728002AFA32 /* Color.swift */,
+				282937222A1D3959002E1079 /* Defaults.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

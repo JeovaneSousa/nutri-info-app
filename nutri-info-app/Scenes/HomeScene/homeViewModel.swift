@@ -13,6 +13,7 @@ class HomeViewModel: ObservableObject {
     @Published var height: Float?
     @Published var selectedGoal: Goals = .MAINTENANCE
     @Published var errorOcurred: Bool = false
+    @Published var showLogOutAlert = false
 
     let api = ReportApi()
 

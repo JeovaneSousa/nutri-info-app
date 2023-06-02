@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileHeader: View {
     let user: User
     
-    var url: URL? {
+    private var url: URL? {
         if let uri = user.profilaUri,
            let url = URL(string: uri) {
             return url

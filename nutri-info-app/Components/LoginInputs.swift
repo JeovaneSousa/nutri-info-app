@@ -32,7 +32,7 @@ struct LoginInputs: View {
             HStack{
                 TextField(placeHolder, text: $value)
                     .foregroundColor(.primary)
-                    .textInputAutocapitalization(.never)
+                    .textInputAutocapitalization(.words)
                     .autocorrectionDisabled(true)
             }
             Rectangle()

@@ -20,18 +20,18 @@ struct ReportFields: View {
         self.valueText = valueText
     }
     
-    var numberValue: some View {
+    @ViewBuilder var numberValue: some View {
         Text(value ?? 0, format: .number.precision(.fractionLength(2)))
             .font(.title)
     }
     
-    var textValue: some View {
+    @ViewBuilder var textValue: some View {
         Text(self.valueText ?? "")
             .font(.headline)
     }
     
     var hasTextValue: Bool {
-        if let text = valueText {return true}
+        if let _ = valueText {return true}
         return false
     }
     

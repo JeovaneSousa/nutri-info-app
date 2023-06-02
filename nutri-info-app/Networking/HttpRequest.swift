@@ -12,13 +12,12 @@ class HttpRequest {
     var dataTask: URLSessionDataTask?
     
 
-    func execute<T: Codable>(url: String,
+    func execute<T: Codable>(url: URL,
                              httpMethod: HttpMethod,
                              decoder: JSONDecoder = .init(),
                              encoder: JSONEncoder = .init(),
                              completionHandler: @escaping (HttpResult<T>) -> Void) {
         
-        guard let url = URL(string: url) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Accept")

@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ReportView: View {
-    @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject private var coordinator: Coordinator
     @State private var showDisclaimer = false
-    @State private var showAnimation = false
     
     let report: Report
     
@@ -20,7 +19,7 @@ struct ReportView: View {
     
     var body: some View {
 
-        VStack(spacing: 30) {
+        VStack(spacing: 20) {
             Text("Nutritional Report")
                 .font(.title)
                 .fontWeight(.bold)
@@ -62,7 +61,7 @@ struct ReportView: View {
                 Button {
                     showDisclaimer = true
                 } label: {
-                   Image(systemName: "info.bubble")
+                    Image(systemName: "info.bubble")
                         .foregroundColor(.primary)
                 }
             }
@@ -70,7 +69,7 @@ struct ReportView: View {
         .sheet(isPresented: $showDisclaimer) {
             coordinator.build(page: .disclaimerView(report))
                 .presentationCornerRadius(35)
-                .presentationDetents([.fraction(0.7)])
+                .presentationDetents([.fraction(0.85)])
                 .presentationDragIndicator(.visible)
                 .presentationBackground(Color.mainColor)
         }
