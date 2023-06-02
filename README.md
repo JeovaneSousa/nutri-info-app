@@ -1,6 +1,6 @@
 # Nutri Info APP
 
-## Get information on how many calories or water you need to consume daily. Also, get some intel on how healthy is your body mass index.
+## Get information on how many calories and water you need to consume daily. Also, get some intel on how healthy your body mass index currently is.
 
 About the APP:
 * You can log in by providing your name and an optional URL for a profile picture to be displayed. You can select the appearance mode, and also togle a remember me function, so that your information gets recovered when you come back to the app. 
