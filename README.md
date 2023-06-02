@@ -6,12 +6,12 @@ About the APP:
 * You can log in by providing your name and an optional URL for a profile picture to be displayed. You can select the appearance mode, and also togle a remember me function, so that your information gets recovered when you come back to the app. 
 
 Topics covered:
-* Coordinator Pattern
+* Coordinator Pattern with Navigation Stack
+* MVVM
 * URLSession and Result for the Network Layer
 * UserDefaults
-* Dark and Light mode.
-* Conditional and Enviromental Modifiers
-* State changes, Bindings and Singletons (@FocusState, @State, @Published, @StateObject, @ObservableOBjects, @EnvironmentObject)
+* Dark and Light mode
+* State, Focus, Bindings and Singletons (@FocusState, @State, @Published, @StateObject, @ObservableOBjects, @EnvironmentObject)
 
 Stack:
 * SwiftUI
