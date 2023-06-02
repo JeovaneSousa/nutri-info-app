@@ -24,8 +24,11 @@ Link for the repository of the API I used: https://github.com/JeovaneSousa/nutri
 ![Screenshot 2023-06-02 at 13 13 28](https://github.com/JeovaneSousa/nutri-info-app/assets/66012358/0891ec0c-af5f-45c2-ab86-1c565f8306d0)
 ![Screenshot 2023-06-02 at 13 15 33](https://github.com/JeovaneSousa/nutri-info-app/assets/66012358/a6405e1d-8ef2-4101-9b76-1e66b6e6d39d)
 ![Screenshot 2023-06-02 at 13 14 43](https://github.com/JeovaneSousa/nutri-info-app/assets/66012358/ee799652-05a1-4abc-a918-f485f9e3a487)
+![Screenshot 2023-06-02 at 13 17 39](https://github.com/JeovaneSousa/nutri-info-app/assets/66012358/4b3bf723-8108-4da2-a764-47c62fca40c0)
 ![Screenshot 2023-06-02 at 13 14 51](https://github.com/JeovaneSousa/nutri-info-app/assets/66012358/53e6e9d1-4299-4093-be83-a1b1322e1faf)
+![Screenshot 2023-06-02 at 13 21 58](https://github.com/JeovaneSousa/nutri-info-app/assets/66012358/3e786e87-e57c-44cd-8587-98f5e04d88a6)
 
+* Video demo:
 Login Screen:
 https://github.com/JeovaneSousa/nutri-info-app/assets/66012358/a1939e1c-76df-4a9c-9008-c7c4dd2c0662
 
