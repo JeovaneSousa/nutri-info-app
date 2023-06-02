@@ -33,7 +33,14 @@ struct LoginView: View {
                 
                 .onAppear {
                     defaultsManager.retrieveDefaultColorSchema()
+                    
+                    defaultsManager.retrieveRememberStatus()
+                    if defaultsManager.rememberMe {
+                        let user = defaultsManager.retrieveUser()
+                        coordinator.push(page: .homeView(user))
+                    }
                 }
+                
             }
             HStack {
                 VStack(alignment:.leading,
@@ -54,7 +61,7 @@ struct LoginView: View {
                 LoginInputs(.PROFILEURI, $viewModel.profileURI)
             }
             
-            Toggle("Remeber me",isOn: $viewModel.rememberMe)
+            Toggle("Remeber me",isOn: $defaultsManager.rememberMe)
                 .foregroundColor(.secondary)
                 .padding(.leading, 200)
             
@@ -64,6 +71,9 @@ struct LoginView: View {
                 StyledButton(withText:"Try it out") {
                     let user = User(name: viewModel.name, profilaUri: viewModel.profileURI)
                     
+                    if defaultsManager.rememberMe {
+                        defaultsManager.saveUser(user: user)
+                    }
                     coordinator.push(page: .homeView(user))
                 }
                 .disabled(viewModel.isDisabled)

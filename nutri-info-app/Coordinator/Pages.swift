@@ -10,4 +10,5 @@ enum Page: Hashable {
     case loginView
     case homeView(User)
     case reportView(Report)
+    case disclaimerView(Report)
 }

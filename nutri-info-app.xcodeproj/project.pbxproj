@@ -16,6 +16,7 @@
 		2807D9EF2A1B2382001ACFE4 /* LoginInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807D9EE2A1B2382001ACFE4 /* LoginInputs.swift */; };
 		2807D9F52A1B266A001ACFE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807D9F42A1B266A001ACFE4 /* HomeView.swift */; };
 		282937232A1D395A002E1079 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282937222A1D3959002E1079 /* Defaults.swift */; };
+		285689992A27134F0022965F /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285689982A27134F0022965F /* DisclaimerView.swift */; };
 		2858E3202A16A56D007193CB /* nutri_info_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858E31F2A16A56D007193CB /* nutri_info_appApp.swift */; };
 		2858E3222A16A56D007193CB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858E3212A16A56D007193CB /* LoginView.swift */; };
 		2858E3242A16A56E007193CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2858E3232A16A56E007193CB /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		2807D9EE2A1B2382001ACFE4 /* LoginInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputs.swift; sourceTree = "<group>"; };
 		2807D9F42A1B266A001ACFE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		282937222A1D3959002E1079 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		285689982A27134F0022965F /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
 		2858E31C2A16A56D007193CB /* nutri-info-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nutri-info-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2858E31F2A16A56D007193CB /* nutri_info_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nutri_info_appApp.swift; sourceTree = "<group>"; };
 		2858E3212A16A56D007193CB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				2892DB142A2056A400EDB692 /* ReportView.swift */,
+				285689982A27134F0022965F /* DisclaimerView.swift */,
 			);
 			path = ReportScene;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				2806096A2A1BE0B100EC8524 /* homeViewModel.swift in Sources */,
 				2807D9F52A1B266A001ACFE4 /* HomeView.swift in Sources */,
 				28935C7B2A1E9728002AFA32 /* Color.swift in Sources */,
+				285689992A27134F0022965F /* DisclaimerView.swift in Sources */,
 				289FC96C2A1F205000B275D4 /* HttpRequest.swift in Sources */,
 				280609642A1BB8B200EC8524 /* Pages.swift in Sources */,
 				2858E3202A16A56D007193CB /* nutri_info_appApp.swift in Sources */,

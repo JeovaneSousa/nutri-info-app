@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ReportView: View {
     @EnvironmentObject var coordinator: Coordinator
+    @State private var showDisclaimer = false
+    @State private var showAnimation = false
+    
     let report: Report
     
     init(report: Report) {
@@ -41,9 +44,10 @@ struct ReportView: View {
                 ReportFields(type: .waterRequirement, value: Float(report.waterRequirement))
             }
         }
+        .navigationBarBackButtonHidden(true)
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .background(Color.mainColor)
-        .navigationBarBackButtonHidden(true)
+        
         .toolbar {
             ToolbarItem (placement: .navigationBarLeading){
                 Button {
@@ -53,16 +57,23 @@ struct ReportView: View {
                         .foregroundColor(.primary)
                 }
             }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    
+                    showDisclaimer = true
                 } label: {
                    Image(systemName: "info.bubble")
                         .foregroundColor(.primary)
                 }
             }
         }
-
+        .sheet(isPresented: $showDisclaimer) {
+            coordinator.build(page: .disclaimerView(report))
+                .presentationCornerRadius(35)
+                .presentationDetents([.fraction(0.7)])
+                .presentationDragIndicator(.visible)
+                .presentationBackground(Color.mainColor)
+        }
     }
 }
 
